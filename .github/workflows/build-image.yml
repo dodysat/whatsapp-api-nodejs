@@ -61,3 +61,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.prep.outputs.tags }}
+
+      - name: Hit Webhook
+        run: |
+          curl --location --request POST 'http://194.233.87.61:9000/api/webhooks/c9ae5333-bacb-4e63-b3f8-c26e660691a0'
