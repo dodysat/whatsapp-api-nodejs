@@ -1,12 +1,11 @@
-FROM node:16-alpine
+FROM node:19-alpine
 
-ENV PORT 8080
-RUN apk add --no-cache yarn git
+RUN apk add git
 
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN yarn install --production --no-lockfile
-COPY . .
+COPY . /home/node/app
 
-EXPOSE $PORT
-CMD [ "npm", "start" ]
+WORKDIR /home/node/app
+
+RUN yarn install
+
+CMD yarn start
